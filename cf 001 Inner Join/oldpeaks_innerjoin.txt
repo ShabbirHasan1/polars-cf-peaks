@@ -1,8 +1,0 @@
-ReplaceRule{}
-Read{Master.csv ~ Master}
-View{Master}
-Readsample{File ~ FactTable}
-View{FactTable}
-JoinTable{File | Quantity, Unit_Price => AllMatch(Master) Multiply(Amount) ~ Old_Peaks_Innerjoin_Result.csv}
-Readsample{Outbox\Old_Peaks_Innerjoin_Result.csv ~ Old_Peaks_Innerjoin_Result}
-View{Old_Peaks_Innerjoin_Result}
