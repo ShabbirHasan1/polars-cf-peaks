@@ -1,0 +1,12 @@
+[package]
+name = "peakrs_innerjoin"
+version = "0.0.1"
+authors = ["Peaks <peaks@gmail.com>"]
+
+[dependencies]
+rayon = "1.7"
+regex = "1.9"
+chrono = "0.4"
+bytes = "1"
+peakrs = { path = "../peakrs" }
+peakcore = { path = "../peakcore" }
