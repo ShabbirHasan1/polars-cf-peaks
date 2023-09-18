@@ -68,9 +68,13 @@ fn main() -> Result<(), Error> {
         }
     }
 
+    println!();
+	println!("*** Processing: peakrs_innerjoin.exe ***");
+	println!();
+
     innerjoin(df, &source_file_path,  &result_file_path);    
    
-    view_sample(&result_file_path);   
+    view_sample(&result_file_path);      
 
     return Ok(());
 }
@@ -94,8 +98,8 @@ fn innerjoin(ref_df: Dataframe, source_file_path: &str, result_file_path: &str) 
 
     while &ref_df.processed_partition < &ref_df.partition_count {             
        
-        let df = read_csv(&ref_df, source_file_path);      
-	let df = join_key_value(&df, &master_df, "Product, Style => Inner(KeyValue)");
+        let df = read_csv(&ref_df, source_file_path);     
+		let df = join_key_value(&df, &master_df, "Product, Style => Inner(KeyValue)");
         let df = add_column(&df, "Quantity, Unit_Price => Multiply(Amount)");	
       
         append_csv(&df, &result_file_path);

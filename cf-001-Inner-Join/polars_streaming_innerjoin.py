@@ -13,6 +13,10 @@ fact_table = pl.scan_csv(source_file_path)
 sample_df = fact_table.fetch(10)
 print(sample_df)
 
+print()
+print("*** Processing: python polars_streaming_innerjoin.py ***")
+print()
+
 result = fact_table.join(master, on=["Product","Style"], 
                          how="inner").with_columns((
              pl.col("Quantity") * 

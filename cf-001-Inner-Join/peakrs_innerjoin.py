@@ -67,6 +67,10 @@ try:
 except:
     print("Fail to create file")
 
+print()
+print("*** Processing: python peakrs_innerjoin.py ***")
+print()
+
 join_table(df, source_file_path, result_file_path)
 
 pr.view_sample(result_file_path)

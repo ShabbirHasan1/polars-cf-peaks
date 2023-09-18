@@ -35,6 +35,10 @@ func main() {
 		return
 	}
 
+	fmt.Println()
+	fmt.Println("*** Processing: gopeaks_innerjoin.exe ***")
+	fmt.Println()
+
 	InnerJoin(df, source_file_path, result_file_path)
 
 	fmt.Println()
@@ -44,7 +48,7 @@ func main() {
 func InnerJoin(ref_df gopeaks.Dataframe, source_file_path string, result_file_path string) {
 
 	ref_df = *gopeaks.Get_CSV_Partition_Address(ref_df, "Inbox/Master.csv")
-	master_df := gopeaks.Read_CSV(ref_df, "Inbox/Master.csv")	
+	master_df := gopeaks.Read_CSV(ref_df, "Inbox/Master.csv")
 	master_df = gopeaks.Build_Key_Value(*master_df, "Product, Style => Table(KeyValue)")
 
 	ref_df = *gopeaks.Get_CSV_Partition_Address(ref_df, source_file_path)

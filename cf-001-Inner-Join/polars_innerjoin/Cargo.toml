@@ -7,4 +7,4 @@ edition = "2021"
 
 [dependencies]
 polars = "0.19"
-##polars = { version = "0.32.0", features = ["lazy"] }
+##polars = { version = "0.31.0", features = ["lazy"] }

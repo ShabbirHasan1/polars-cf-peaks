@@ -39,6 +39,10 @@ func main() {
 		return
 	}
 
+	fmt.Println()
+	fmt.Println("*** Processing: gopeaks_turbo_innerjoin.exe ***")
+	fmt.Println()
+
 	InnerJoin(df, source_file_path, result_file_path)
 
 	fmt.Println()
@@ -77,7 +81,7 @@ func InnerJoin(ref_df gopeaks.Dataframe, source_file_path string, result_file_pa
 
 		df := source_df_group[ref_df.Streaming_Batch]
 		df = *gopeaks.Join_Key_Value(df, *master_df, "Product, Style => Inner(KeyValue)")
-		df = *gopeaks.Add_Column(df, "Quantity, Unit_Price => Multiply(Amount)")
+		df = *gopeaks.Add_Column(df, "Quantity, Unit_Price => Multiply(Amount)")		
 
 		result_df.Lock()
 		result_df_group[ref_df.Streaming_Batch] = df
