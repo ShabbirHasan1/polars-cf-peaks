@@ -6,17 +6,6 @@ from datetime import datetime
 from pathlib import Path
 import peakrs as pr
 
-def get_filename(base_name, extension):
-    counter = 0
-    while True:
-        if counter == 0:
-            file_name = f"{base_name}.{extension}"
-        else:
-            file_name = f"{base_name}{counter}.{extension}"
-        if not os.path.exists(file_name):
-            return file_name
-        counter += 1
-
 def join_table(ref_df: pr.Dataframe, source_file_path: str, result_file_path: str):    
     
     ref_df = pr.get_csv_partition_address(ref_df, "Inbox/Master.csv")      
