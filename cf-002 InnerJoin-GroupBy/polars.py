@@ -6,11 +6,9 @@ import time
 start_time = time.time()
 
 master = pl.scan_csv("Inbox/Master.csv")
-
 filter_master = master.filter(pl.col('Style') == "F")
 
 source_file_path = os.path.join("Inbox/", sys.argv[1])
-
 fact_table = pl.scan_csv(source_file_path)
 
 detail_result = fact_table.filter((pl.col('Shop') >= "S90") & (pl.col('Shop') <= "S99")
@@ -25,15 +23,9 @@ summary_result = detail_result.group_by(by=["Shop", "Product"]).agg(
 
 result_file_path0 = f"Outbox/Polars_Detail_Result_{os.path.basename(source_file_path)}"
 detail_result.sink_csv(result_file_path0)
-detail_result = pl.scan_csv(result_file_path0)
-sample_df0 = detail_result.fetch(10)
-print(sample_df0)
 
 result_file_path1 = f"Outbox/Polars_Summary_Result_{os.path.basename(source_file_path)}"
 summary_result.sink_csv(result_file_path1)
-summary_result = pl.scan_csv(result_file_path1)
-sample_df1 = summary_result.fetch(10)
-print(sample_df1)
 
 end_time = time.time()
 print("Peakpy Duration (In Second): {}".format(round(end_time-start_time,3)))
