@@ -28,4 +28,4 @@ result_file_path1 = f"Outbox/Polars_Summary_Result_{os.path.basename(source_file
 summary_result.sink_csv(result_file_path1)
 
 end_time = time.time()
-print("Peakpy Duration (In Second): {}".format(round(end_time-start_time,3)))
+print("Polars Duration (In Second): {}".format(round(end_time-start_time,3)))
