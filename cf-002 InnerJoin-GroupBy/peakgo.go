@@ -1,46 +1,46 @@
 package main
 
 import (
-	"fmt"		
+	"fmt"
 	"path/filepath"
-	"peakgo/peakgo"	
+	"peakgo/peakgo"
 	"time"
 )
 
-func main() {	
+func main() {
 
-	start_time := time.Now()
+	StartTime := time.Now()
 
 	var df peakgo.Dataframe
-	df.Log_File_Name = "Outbox/Log-" + start_time.Format("060102-150405") + ".csv"
-	df.Partition_Size_MB = 5
+	df.LogFileName = "Outbox/Log-" + StartTime.Format("060102-150405") + ".csv"
+	df.PartitionSizeMB = 5
 	df.Thread = 100
 
-	peakgo.Create_Log(df)	
+	peakgo.CreateLog(df)
 
 	query1 := peakgo.Query(
 		"filter", "Style(=F)",
 		"build_key_value", "Product, Style => Table(key_value)")
 
-	master_df := peakgo.Run_Batch(df, "Inbox/Master.csv", query1)
+	master_df := peakgo.RunBatch(df, "Inbox/Master.csv", query1)
 
-	query2 := peakgo.Query(		
+	query2 := peakgo.Query(
 		"filter", "Shop(S90..S99)",
-		"join_key_value", "Product, Style => Inner(key_value)",				
+		"join_key_value", "Product, Style => Inner(key_value)",
 		"add_column", "Quantity, Unit_Price => Multiply(Amount)",
 		"filter", "Amount:Float(>100000)",
-        "group_by", "Shop, Product => Count() Sum(Quantity) Sum(Amount)")
-	
-	source_file := peakgo.Get_CLI_file_path("10-MillionRows.csv")
-	result_file := []string{"Outbox/PeakGo-Detail-Result-" + filepath.Base(source_file), 
-	                        "Outbox/Peakgo-Summary-Result-" + filepath.Base(source_file)}
-							
-	peakgo.Run_Stream(df, &master_df, source_file, query2, result_file)	
+		"group_by", "Shop, Product => Count() Sum(Quantity) Sum(Amount)")
 
-	peakgo.View_Sample(result_file[0])
-	peakgo.View_Sample(result_file[1])
+	source_file := peakgo.GetCliFilePath("10-MillionRows.csv")
+	result_file := []string{"Outbox/PeakGo-Detail-Result-" + filepath.Base(source_file),
+		"Outbox/Peakgo-Summary-Result-" + filepath.Base(source_file)}
 
-	end_time := time.Now()
-	duration := end_time.Sub(start_time)	
+	peakgo.RunStream(df, &master_df, source_file, query2, result_file)
+
+	peakgo.ViewSample(result_file[0])
+	peakgo.ViewSample(result_file[1])
+
+	EndTime := time.Now()
+	duration := EndTime.Sub(StartTime)
 	fmt.Printf("Peakgo Duration (In Second): %.3f \n", duration.Seconds())
 }
