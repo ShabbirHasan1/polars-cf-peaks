@@ -5,7 +5,6 @@ import csv
 import argparse
 import re
 import time
-import pandas as pd
 
 # Handle command-line arguments
 parser = argparse.ArgumentParser()
