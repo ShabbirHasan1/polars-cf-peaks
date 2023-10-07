@@ -1,9 +1,0 @@
-Test Case,Run 1,Average
-python polar-parquet.py,0.4,0.4
-python duckdb-parquet.py,0.87,0.87
-python polar-csv.py,0.47,0.47
-python duckdb-csv.py,1.27,1.27
-python peakrs.py,0.27,0.27
-peakrs,0.18,0.18
-peakcs,0.48,0.48
-peakgo,0.22,0.22
