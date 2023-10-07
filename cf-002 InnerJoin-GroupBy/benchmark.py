@@ -5,6 +5,7 @@ import csv
 import argparse
 import re
 import time
+import pandas as pd
 
 # Handle command-line arguments
 parser = argparse.ArgumentParser()
@@ -99,14 +100,14 @@ for data_file in data_files:
             ## Write benchmark records to disk
             with open(result, 'w', newline='') as f:
                 writer = csv.writer(f)   
-                writer.writerow(["Test Case"] + [f"Run {i+1}" for i in range(len(list(elapsed_times_scripts.values())[0]))] + ["Average"])    
+                header = ["Test Case"] + [f"Run {i+1}" for i in range(len(list(elapsed_times_scripts.values())[0]))] + ["Average"]
+                writer.writerow(header)
                 for script, times in elapsed_times_scripts.items():
                     # Calculate the average time for all runs and add it as a row
                     avg_time = round(sum(t for t in times if isinstance(t, float))/len(times), 2) if all(isinstance(t, float) for t in times) else 'Fail'
                     writer.writerow([script] + times + [avg_time])
 
-            ## Display benchmark results to screen
-
+           # Display benchmark results to screen
             with open(result, 'r') as f:
                 reader = csv.reader(f)
                 rows = list(reader)
@@ -117,12 +118,17 @@ for data_file in data_files:
             # Calculate total time for proportion calculation
             total_time = sum(float(row[-1]) for row in rows[1:] if row[-1] != 'Fail')
 
-            # Calculate total characters in a row
-            total_chars = sum(len(row[0]) for row in rows[1:])        
+            # Calculate total characters in the first row
+            widths = [max(map(len, col)) for col in zip(*rows)]
+            first_row = "  ".join((val.ljust(width) for val, width in zip(rows[0] + ['Rank'], widths + [4])))
+            total_chars = len(first_row)
+
+            print(f"Number of characters in the first row: {total_chars}")
+
+            # Get the time of the worst ranking
+            worst_time = float(rows[-1][-1]) if rows[-1][-1] != 'Fail' else total_time
 
             # Display benchmark results to screen
-
-            widths = [max(map(len, col)) for col in zip(*rows)]
             for i, row in enumerate(rows):
                 # Add underline to the column names
                 if i == 0:
@@ -130,11 +136,8 @@ for data_file in data_files:
                 else:
                     print("  ".join((val.ljust(width) for val, width in zip(row + [str(i)], widths + [4]))))
                     if row[-1] != 'Fail':
-                        proportion = float(row[-1]) / total_time
-                        line_width = int(proportion * 200)
-                        # Ensure the line width of the last rank does not exceed the total width of the table
-                        if i == len(rows) - 1:
-                            line_width = min(line_width, 200)
+                        proportion = float(row[-1]) / worst_time
+                        line_width = int(proportion * total_chars)
                         print('-' * line_width + '>')
 
             # Pause for 3 seconds after displaying the entire table
