@@ -83,12 +83,13 @@ for data_file in data_files:
 
         if (i+1)%len(scripts) == 0:
             # Move the files to the batch folder after each complete run
-            batch_dir = os.path.join(outbox_dir, batches[i//len(scripts)])
+            batch_dir = os.path.join(outbox_dir, batches[i//len(scripts)])            
+            
             if not os.path.exists(batch_dir):
                 os.makedirs(batch_dir)
-            for file_name in os.listdir(outbox_dir):
+            for file_name in os.listdir(outbox_dir):              
                 if (file_name.endswith('.csv') or file_name.endswith('.parquet')) and file_name != os.path.basename(result):
-                    os.rename(os.path.join(outbox_dir, file_name), os.path.join(batch_dir, file_name))
+                  os.rename(os.path.join(outbox_dir, file_name), os.path.join(batch_dir, file_name))
 
             for _ in range(3):
                 print()
@@ -97,6 +98,8 @@ for data_file in data_files:
             print()
 
             ## Write benchmark records to disk
+            result = f"Outbox/InnerJoin_{data_file_name}_benchmark_Run{i//len(scripts)+1}.csv"
+            
             with open(result, 'w', newline='') as f:
                 writer = csv.writer(f)   
                 header = ["Test Case"] + [f"Run {i+1}" for i in range(len(list(elapsed_times_scripts.values())[0]))] + ["Average"]
@@ -120,9 +123,7 @@ for data_file in data_files:
             # Calculate total characters in the first row
             widths = [max(map(len, col)) for col in zip(*rows)]
             first_row = "  ".join((val.ljust(width) for val, width in zip(rows[0] + ['Rank'], widths + [4])))
-            total_chars = len(first_row)
-
-            print(f"Number of characters in the first row: {total_chars}")
+            total_chars = len(first_row)           
 
             # Get the time of the worst ranking
             worst_time = float(rows[-1][-1]) if rows[-1][-1] != 'Fail' else total_time
