@@ -62,14 +62,14 @@ run_stream(df, source_file, master_df, query2, result_file)
 
 | Test Case | Run 1 | Run 2 | Run 3 | Run 4 | Run 5 | Average |
 | --- | --- | --- | --- | --- | --- | --- |
-| python polar-parquet.py | 0.4 | 0.47 | 0.45 | 0.47 | 0.45 | 0.45 |
-| python duckdb-parquet.py | 0.87 | 0.93 | 0.89 | 0.97 | 0.96 | 0.92 |
-| python polar-csv.py | 0.47 | 0.39 | 0.41 | 0.42 | 0.4 | 0.42 |
-| python duckdb-csv.py | 1.27 | 1.15 | 1.24 | 1.13 | 1.19 | 1.2 |
-| python peakrs.py | 0.27 | 0.22 | 0.21 | 0.23 | 0.22 | 0.23 |
-| peakrs|  	0.18|  	0.16|  	0.17|  	0.14|  	0.15|  	0.16|
-| peakcs|  	0.48|  	0.51|  	0.5|  	0.44|  	0.44|  	0.47|
-| peakgo|  	0.22|  	0.18|  	0.2|  	0.18|  	0.17|  	0.19|
+| python polar-parquet.py | 8.43 | 7.84 | 8.1 | 7.91 | 8.27 | 8.11 |
+| python duckdb-parquet.py | 9.45 | 6.11 | 6.36 | 6.34 | 6.31 | 6.91 |
+| python polar-csv.py | 6.8 | 6.83 | 6.83 | 6.83 | 6.82 | 6.82 |
+| python duckdb-csv.py | 14.53 | 13.02 | 12.96 | 12.93 | 12.96 | 13.28 |
+| python peakrs.py | 5.17 | 5.18 | 5.08 | 5.17 | 5.07 | 5.13 |
+| peakrs | 5.15 | 5.11 | 4.88 | 5.07 | 4.97 | 5.04 |
+| peakcs |13.67|13.47|14.27|13.45|13.41|13.65|
+| peakgo|3.62|3.61|3.46|3.97|3.57|3.65|
 
 ### Scale: 1 Billion Rows
 ### Video: https://youtu.be/egGCBMppVL8
