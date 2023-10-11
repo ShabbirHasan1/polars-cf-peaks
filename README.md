@@ -2,7 +2,7 @@
 Comparing Polars and Peaks in Query Syntax, Flexibility, Performance and Memory Utilization
 
 ## Current Script Folder: cf-002 InnerJoin-GroupBy
-## Current Version: Polars (0.19.7), DuckDB (0.9)
+## Current Version: Polars (0.19.7), DuckDB (0.9), Python (3.11)
 ## Current Query
 
 The run_batch function will store the result table in memory, but a limitation is that the dataset size cannot exceed the available memory.
