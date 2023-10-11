@@ -3,6 +3,10 @@ Comparing Polars and Peaks in Query Syntax, Flexibility, Performance and Memory 
 
 ## Current Script Folder: cf-002 InnerJoin-GroupBy
 ## Current Query
+
+The run_batch function will store the result table in memory, but a limitation is that the dataset size cannot exceed the available memory.
+On the other hand, when run_batch outputs the result table to disk, it has the advantage of handling datasets that are larger than the available memory.
+
 ```
 query1 = query(
     "filter", "Style(=F)",
