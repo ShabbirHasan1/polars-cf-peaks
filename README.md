@@ -2,8 +2,8 @@
 Comparing Polars and Peaks in Query Syntax, Flexibility, Performance and Memory Utilization
 
 ## Current Script Folder: cf-002 InnerJoin-GroupBy
-
-\`\`\`python
+## Current Query
+```
 query1 = query(
     "filter", "Style(=F)",
     "build_key_value", "Product, Style => Table(key_value)")
@@ -24,7 +24,7 @@ result_file = [f"Outbox/Peakpy-Detail-Result-{os.path.basename(source_file)}",
 
 run_stream(df, source_file, master_df, query2, result_file)
 
-\`\`\`
+```
 
 
 ## All Benchmarking Results Are Recorded in Seconds
