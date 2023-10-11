@@ -98,7 +98,7 @@ run_stream(df, source_file, master_df, query2, result_file)
 ### Automatic Benchmarking Software: https://youtu.be/Uohm_-zr_sc
 ### How-to Expand Dataset: https://youtu.be/eXwqamjWbjU
 
-## Other Comparison
+### Other Comparisons
 
 | | Polars | Peaks |
 | --- | --- | --- |
