@@ -42,4 +42,14 @@ Comparing Polars and Peaks in Query Syntax, Flexibility, Performance and Memory 
 | peakcs|  	0.48|  	0.51|  	0.5|  	0.44|  	0.44|  	0.47|
 | peakgo|  	0.22|  	0.18|  	0.2|  	0.18|  	0.17|  	0.19|
 
+### Data: 1,000 Million Rows
+
+| Test Case | Run 1 | Run 2 | Run 3 | Average |
+| --- | --- | --- | --- | --- |
+| python polar-parquet.py | 92.41 | 91.16 | 91.59 | 91.72 |
+| python duckdb-parquet.py | 429.97 | 414.19 | 425.25 | 423.14 |
+| peakrs|  	60.1|  	60.05|  	59.94|  	60.03|
+| peakgo|  	36.53|  	31.3|  	32.13|  	33.32|
+
+
 
