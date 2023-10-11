@@ -107,9 +107,9 @@ run_stream(df, source_file, master_df, query2, result_file)
 | Contributor | Many | One |
 | Current Project Nature | Business | Hobby |
 | Language |  |  |
-| - Library | Rust | "Rust, Go, C#" |
+| - Library | Rust | Rust, Go, C-Sharp |
 |  | (Open Source) | (Proprierary) |
-| - App | "Python, Rust, R" | "Python, Rust, Go, C#" |
+| - App | Python, Rust, R | Python, Rust, Go, C-Sharp |
 |  | (Open Source) | (Open Source) |
 | Supports Streaming | Yes | Yes |
 | Memory Utilization | Very High | Very Little |
