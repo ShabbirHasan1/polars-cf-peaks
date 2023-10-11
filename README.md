@@ -2,8 +2,10 @@
 Comparing Polars and Peaks in Query Syntax, Flexibility, Performance and Memory Utilization
 
 ## Current Script Folder: cf-002 InnerJoin-GroupBy
+## All Benchmarking Results Are Recorded in Seconds
 
-### Data: 1 Million Rows
+### Scale: 1 Million Rows  
+### Video: https://youtu.be/cgqLdb_RXLc
 
 | Test Case | Run 1 | Run 2 | Run 3 | Run 4 | Run 5 | Average |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -16,7 +18,8 @@ Comparing Polars and Peaks in Query Syntax, Flexibility, Performance and Memory 
 | peakcs | 0.48 | 0.51 | 0.5 | 0.44 | 0.44 | 0.47 |
 | peakgo|  	0.22|  	0.18|  	0.2|  	0.18|  	0.17|  	0.19|
 
-### Data: 10 Million Rows
+### Scale: 10 Million Rows
+### Video: https://youtu.be/cgqLdb_RXLc
 
 | Test Case | Run 1 | Run 2 | Run 3 | Run 4 | Run 5 | Average |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -29,7 +32,8 @@ Comparing Polars and Peaks in Query Syntax, Flexibility, Performance and Memory 
 | peakcs|  	2.01|  	1.96|  	2.01|  	1.96|  	2.01|  	1.99|
 | peakgo|  	0.73|  	0.69|  	0.69|  	0.7|  	0.68|  	0.7|
 
-### Data: 100 Million Rows
+### Scale: 100 Million Rows
+### Video: https://youtu.be/cgqLdb_RXLc
 
 | Test Case | Run 1 | Run 2 | Run 3 | Run 4 | Run 5 | Average |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -42,7 +46,9 @@ Comparing Polars and Peaks in Query Syntax, Flexibility, Performance and Memory 
 | peakcs|  	0.48|  	0.51|  	0.5|  	0.44|  	0.44|  	0.47|
 | peakgo|  	0.22|  	0.18|  	0.2|  	0.18|  	0.17|  	0.19|
 
-### Data: 1,000 Million Rows
+### Scale: 1 Billion Rows
+### Video: https://youtu.be/egGCBMppVL8
+
 
 | Test Case | Run 1 | Run 2 | Run 3 | Average |
 | --- | --- | --- | --- | --- |
@@ -50,6 +56,16 @@ Comparing Polars and Peaks in Query Syntax, Flexibility, Performance and Memory 
 | python duckdb-parquet.py | 429.97 | 414.19 | 425.25 | 423.14 |
 | peakrs|  	60.1|  	60.05|  	59.94|  	60.03|
 | peakgo|  	36.53|  	31.3|  	32.13|  	33.32|
+
+### Scale: 10 Billion Rows
+### Peakrs Video: https://youtu.be/Y2yJtWfgAq0
+### Peakgo Video: https://youtu.be/un8Y7Y0Cd9Q
+
+| Test Case | Run 1 | Run 2 | Average |
+|-----------|-------|-------|---------|
+| peakrs    | 611.4 |613.71 | 612.56  |
+| peakgo    |397.78 |414.25 | 406.02  |
+
 
 
 
