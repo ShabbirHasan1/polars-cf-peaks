@@ -48,6 +48,9 @@ run_stream(df, source_file, master_df, query2, result_file)
 | peakcs | 0.48 | 0.51 | 0.5 | 0.44 | 0.44 | 0.47 |
 | peakgo|  	0.22|  	0.18|  	0.2|  	0.18|  	0.17|  	0.19|
 
+Note: peakrs - Rust, peakcs - C#, peakgo - Golang
+
+
 ### Scale: 10 Million Rows
 ### Video: https://youtu.be/cgqLdb_RXLc
 
