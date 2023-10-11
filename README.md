@@ -98,4 +98,22 @@ run_stream(df, source_file, master_df, query2, result_file)
 ### Automatic Benchmarking Software: https://youtu.be/Uohm_-zr_sc
 ### How-to Expand Dataset: https://youtu.be/eXwqamjWbjU
 
+## Other Comparison
+
+| | Polars | Peaks |
+| --- | --- | --- |
+| Author | Ritchie Vink | Max Yu |
+| Start Project | Year 2020 | Year 2023 |
+| Contributor | Many | One |
+| Current Project Nature | Business | Hobby |
+| Language |  |  |
+| - Library | Rust | "Rust, Go, C#" |
+|  | (Open Source) | (Proprierary) |
+| - App | "Python, Rust, R" | "Python, Rust, Go, C#" |
+|  | (Open Source) | (Open Source) |
+| Supports Streaming | Yes | Yes |
+| Memory Utilization | Very High | Very Little |
+
+
+
 
