@@ -2,6 +2,31 @@
 Comparing Polars and Peaks in Query Syntax, Flexibility, Performance and Memory Utilization
 
 ## Current Script Folder: cf-002 InnerJoin-GroupBy
+
+``
+query1 = query(
+    "filter", "Style(=F)",
+    "build_key_value", "Product, Style => Table(key_value)")
+
+master_df = run_batch(df, "Inbox/Master.csv", query1)
+
+query2 = query(    
+    "filter", "Shop(S90..S99)",
+    "join_key_value", "Product, Style => Inner(key_value)",    
+    "add_column", "Quantity, Unit_Price => Multiply(Amount)",
+    "filter", "Amount:Float(>100000)",
+    "group_by", "Shop, Product => Count() Sum(Quantity) Sum(Amount)"
+)
+
+source_file = os.path.join("Inbox/", sys.argv[1])
+result_file = [f"Outbox/Peakpy-Detail-Result-{os.path.basename(source_file)}", 
+               f"Outbox/Peakpy-Summary-Result-{os.path.basename(source_file)}"]
+
+run_stream(df, source_file, master_df, query2, result_file)
+
+``
+
+
 ## All Benchmarking Results Are Recorded in Seconds
 
 ### Scale: 1 Million Rows  
