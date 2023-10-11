@@ -1,6 +1,8 @@
 # polars-cf-peaks
 Comparing Polars and Peaks in Query Syntax, Flexibility, Performance and Memory Utilization
 
+## Current Script Folder: cf-002 InnerJoin-GroupBy
+
 ### Data: 1 Million Rows
 
 | Test Case | Run 1 | Run 2 | Run 3 | Run 4 | Run 5 | Average |
