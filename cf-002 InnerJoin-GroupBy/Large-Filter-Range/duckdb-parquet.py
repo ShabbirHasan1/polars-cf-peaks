@@ -19,7 +19,7 @@ duckdb.sql("""
     SELECT fact_table.*, Quantity * Unit_Price AS Amount
     FROM fact_table
     JOIN filter_master ON fact_table.Product = filter_master.Product AND fact_table.Style = filter_master.Style
-    WHERE Shop >= 'S21' AND Shop <= 'S99' AND Amount > 10000
+    WHERE Shop >= 'S21' AND Shop <= 'S99' AND Amount > 1000
 """)
 
 duckdb.sql("""
