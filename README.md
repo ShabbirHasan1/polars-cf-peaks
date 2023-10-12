@@ -118,6 +118,51 @@ Note: peakrs - Rust, peakcs - C#, peakgo - Golang
 | Supports Streaming | Yes | Yes |
 | Memory Utilization | Very High | Very Little |
 
+## Very Large Filter Range Benchmarks for the Same InnerJoin-GroupBy Setting
+
+```
+query1 = query(
+    "filter", "Style(B..F)",
+    "build_key_value", "Product, Style => Table(key_value)")
+
+master_df = run_batch(df, "Inbox/Master.csv", query1)
+
+query2 = query(    
+    "filter", "Shop(S21..S99)",
+    "join_key_value", "Product, Style => Inner(key_value)",    
+    "add_column", "Quantity, Unit_Price => Multiply(Amount)",
+    "filter", "Amount:Float(>1000)",
+    "group_by", "Shop, Product => Count() Sum(Quantity) Sum(Amount)"
+)
+
+source_file = os.path.join("Inbox/", sys.argv[1])
+result_file = [f"Outbox/Peakpy-Detail-Result-{os.path.basename(source_file)}", 
+               f"Outbox/Peakpy-Summary-Result-{os.path.basename(source_file)}"]
+
+run_stream(df, source_file, master_df, query2, result_file)
+
+```
+
+| Test Case             | Run 1 | Run 2 | Run 3 | Average |
+|-----------------------|-------|-------|-------|---------|
+| python polar-parquet.py | 1.07  | 1.0   | 1.0   | 1.02    |
+| python peakrs.py        | 0.87  | 0.87  | 0.96  | 0.9     |
+| peakrs                  | 0.89  | 0.95  | 0.92  | 0.92    |
+| peakcs                  | 2.2   | 1.76  | 1.68  | 1.88    |
+| peakgo                  | 0.82  | 0.57  | 0.56  | 0.65    |
+
+
+| Test Case             | Run 1 | Run 2 | Run 3 | Average |
+|-----------------------|-------|-------|-------|---------|
+| python polar-parquet.py | 6.18  | 5.97  | 5.95  | 6.03    |
+| python peakrs.py        | 3.69  | 4.14  | 3.82  | 3.88    |
+| peakrs                  | 3.35  | 3.18  | 3.34  | 3.29    |
+| peakcs                  | 11.3   | 10.62 | 11.03 | 10.98   |
+| peakgo                  | 2.94   | 3.27   | 3.17   | 3.13    |
+
+
+
+
 
 
 
