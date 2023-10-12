@@ -119,6 +119,7 @@ Note: peakrs - Rust, peakcs - C#, peakgo - Golang
 | Memory Utilization | Very High | Very Little |
 
 ## Very Large Filter Range Benchmarks for the Same InnerJoin-GroupBy Setting
+## Polars Process Parquet Compare Peaks Process CSV
 
 ```
 query1 = query(
