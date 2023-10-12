@@ -29,15 +29,9 @@ duckdb.sql("""
     GROUP BY Shop, Product
 """)
 
-# Use fetchdf() instead of fetch_df()
-detail_df = duckdb.sql("SELECT * FROM detail_result").fetchdf()
-summary_df = duckdb.sql("SELECT * FROM summary_result").fetchdf()
-detail_df.to_parquet('Outbox/DuckDB_Detail_Result_' + sys.argv[1].replace('.parquet', '') + '.parquet')
-summary_df.to_parquet('Outbox/DuckDB_Summary_Result_' + sys.argv[1].replace('.parquet', '') + '.parquet')
+# Save the detail_result and summary_result to parquet files directly using duckdb.sql() instead of fetchdf()
+duckdb.sql("COPY (SELECT * FROM detail_result) TO 'Outbox/DuckDB_Detail_Result_' || REPLACE(sys.argv[1], '.parquet', '') || '.parquet' (FORMAT PARQUET)")
+duckdb.sql("COPY (SELECT * FROM summary_result) TO 'Outbox/DuckDB_Summary_Result_' || REPLACE(sys.argv[1], '.parquet', '') || '.parquet' (FORMAT PARQUET)")
 
-print(detail_df.head(10))
-print("\n")  
-print(summary_df.head(10))
-print("\n")  
 end_time = time.time()
 print("DuckDB Parquet Duration (In Second): {}".format(round(end_time-start_time,3)))
