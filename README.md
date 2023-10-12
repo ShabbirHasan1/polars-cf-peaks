@@ -99,25 +99,6 @@ Note: peakrs - Rust, peakcs - C#, peakgo - Golang
 | peakrs    | 611.4 |613.71 | 612.56  |
 | peakgo    |397.78 |414.25 | 406.02  |
 
-### Automatic Benchmarking Software: https://youtu.be/Uohm_-zr_sc
-### How-to Expand Dataset: https://youtu.be/eXwqamjWbjU
-
-### Other Comparisons
-
-| | Polars | Peaks |
-| --- | --- | --- |
-| Author | Ritchie Vink | Max Yu |
-| Start Project | Year 2020 | Year 2023 |
-| Contributor | Many | One |
-| Current Project Nature | Business | Hobby for Retirement |
-| Language |  |  |
-| - Dataframe Library | Rust | Rust, Go, C-Sharp |
-|  | (Open Source) | (Proprierary) |
-| - App | Python, Rust, R | Python, Rust, Go, C-Sharp |
-|  | (Open Source) | (Open Source) |
-| Supports Streaming | Yes | Yes |
-| Memory Utilization | Very High | Very Little |
-
 ## Very Large Filter Range Benchmarks for the Same InnerJoin-GroupBy Setting
 
 ### Polars Process Parquet Compare Peaks Process CSV
@@ -191,7 +172,24 @@ run_stream(df, source_file, master_df, query2, result_file)
 | peakcs                  | 913.86 | 954.7  | 950.1  | 939.55  |
 | peakgo                  | 214.52 | 212.75 | 216.88 | 214.72  |
 
+## Automatic Benchmarking Software: https://youtu.be/Uohm_-zr_sc
+## How-to Expand Dataset: https://youtu.be/eXwqamjWbjU
 
+## Other Comparisons
+
+| | Polars | Peaks |
+| --- | --- | --- |
+| Author | Ritchie Vink | Max Yu |
+| Start Project | Year 2020 | Year 2023 |
+| Contributor | Many | One |
+| Current Project Nature | Business | Hobby for Retirement |
+| Language |  |  |
+| - Dataframe Library | Rust | Rust, Go, C-Sharp |
+|  | (Open Source) | (Proprierary) |
+| - App | Python, Rust, R | Python, Rust, Go, C-Sharp |
+|  | (Open Source) | (Open Source) |
+| Supports Streaming | Yes | Yes |
+| Memory Utilization | Very High | Very Little |
 
 
 
