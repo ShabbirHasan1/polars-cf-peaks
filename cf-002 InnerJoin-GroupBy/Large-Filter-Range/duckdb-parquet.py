@@ -37,3 +37,19 @@ duckdb.sql(f"COPY (SELECT * FROM summary_result) TO '{summary_filename}' (FORMAT
 
 end_time = time.time()
 print("DuckDB Parquet Duration (In Second): {}".format(round(end_time-start_time,3)))
+
+
+
+"""
+D:\Benchmarking>python duckdb-parquet.py 1M_Fact.parquet
+DuckDB Parquet Duration (In Second): 0.173
+
+D:\Benchmarking>python duckdb-parquet.py 10M_Fact.parquet
+DuckDB Parquet Duration (In Second): 0.8
+
+D:\Benchmarking>python duckdb-parquet.py 100M_Fact.parquet
+DuckDB Parquet Duration (In Second): 9.035
+
+D:\Benchmarking>python duckdb-parquet.py 1000M_Fact.parquet
+DuckDB Parquet Duration (In Second): 573.928  """
+
