@@ -193,7 +193,7 @@ run_stream(df, source_file, master_df, query2, result_file)
 | Memory Utilization | Very High | Very Little |
 
 
-## A simple Rust and Golang code: Append Fruit vs Conditional Append Fruit
+## A simple Rust and Golang Code: Append Fruit vs Conditional Append Fruit
 
 https://github.com/hkpeaks/polars-cf-peaks/tree/main/cf-002%20InnerJoin-GroupBy/Conditional-Append
 
