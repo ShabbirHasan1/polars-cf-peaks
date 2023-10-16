@@ -198,6 +198,7 @@ run_stream(df, source_file, master_df, query2, result_file)
 https://github.com/hkpeaks/polars-cf-peaks/tree/main/cf-002%20InnerJoin-GroupBy/Conditional-Append
 
 If purely append fruit, Rust run much faster than Golang.
+
 If append fruit by condition, Golang run much faster than Rust.
 
 This explain why Peaksgo run faster then Peakrs and Polars.
